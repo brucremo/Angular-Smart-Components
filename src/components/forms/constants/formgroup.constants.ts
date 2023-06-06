@@ -1,0 +1,17 @@
+export const formErrorMessage: {[key: string]: string} = {
+    required: "is required",
+    min: "should be no less than",
+    max: "should be no more than",
+    minLength: "should be no less than",
+    maxLength: "should be no more than",
+    minDate: "should be on or after",
+    maxDate: "should be on or before",
+    matDatepickerMin: "should be on or after",
+    matDatepickerMax: "should be on or before",
+    double: "must be a decimal",
+    integer: "must be a whole number",
+    letters: "must contain letters only",
+    lettersNumbers: "must contain letters and numbers only",
+    email: "is not a valid email address",
+    boolean: "must be either true or false",
+}

@@ -1,0 +1,21 @@
+<mat-form-field
+  class="smart-form-input-field"
+  [formGroup]="formGroup"
+  [matTooltip]="formFieldModel.tooltip"
+  [matTooltipDisabled]="formFieldModel.hideTooltip"
+  [matTooltipPosition]="formFieldModel.tooltipPosition"
+>
+  <mat-label> {{ inputTitle }}</mat-label>
+  <input
+    matInput
+    [formControlName]="formControlName"
+    [placeholder]="formFieldModel.placeholder"
+    (change)="onChange($event)"
+  />
+  <mat-error>
+    {{ formGroup.getFormControlErrors(formControlName, inputTitle) }}
+  </mat-error>
+
+  <!-- Further Errors -->
+  <ng-content></ng-content>
+</mat-form-field>

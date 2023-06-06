@@ -1,0 +1,21 @@
+<mat-form-field
+  class="smart-form-datepicker-field"
+  [formGroup]="formGroup"
+  [matTooltip]="formFieldModel.tooltip"
+  [matTooltipDisabled]="formFieldModel.hideTooltip"
+  [matTooltipPosition]="formFieldModel.tooltipPosition"
+>
+  <mat-label> {{ inputTitle }}</mat-label>
+  <input matInput [matDatepicker]="datepicker" [formControlName]="formControlName" />
+  <mat-datepicker-toggle matIconSuffix [for]="datepicker">
+    <mat-icon matDatepickerToggleIcon>{{ toggleIcon }}</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker [touchUi]="useTouchUi" #datepicker></mat-datepicker>
+
+  <mat-error>
+    {{ formGroup.getFormControlErrors(formControlName, inputTitle) }}
+  </mat-error>
+
+  <!-- Further Errors -->
+  <ng-content></ng-content>
+</mat-form-field>
