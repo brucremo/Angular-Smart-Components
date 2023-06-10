@@ -22,6 +22,11 @@ export class SmartFormsBaseComponent implements OnInit, ControlValueAccessor {
   @Output('onChange') onChangeEvent: EventEmitter<SmartFormEvent> =
     new EventEmitter<SmartFormEvent>();
 
+  public disabled: boolean = false;
+  protected onTouched!: Function;
+  protected onChanged!: Function;
+  public value: any;
+
   constructor(public formGroupDirective: FormGroupDirective) {
     if (!this.formFieldModel) {
       this.formFieldModel = {
@@ -39,13 +44,21 @@ export class SmartFormsBaseComponent implements OnInit, ControlValueAccessor {
   }
 
   // --- ControlValueAccessor Implementation ---
-  writeValue(obj: any): void {}
+  writeValue(obj: any): void {
+    this.value = obj;
+  }
 
-  registerOnChange(fn: any): void {}
+  registerOnChange(fn: any): void {
+    this.onChanged = fn;
+  }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 
   // --- OnInit Implementation ---
   ngOnInit(): void {

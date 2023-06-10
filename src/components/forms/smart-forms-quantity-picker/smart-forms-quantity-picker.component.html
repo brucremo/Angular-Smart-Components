@@ -1,0 +1,29 @@
+<div
+  class="smart-form-quantity-picker-field"
+  [matTooltip]="formFieldModel.tooltip"
+  [matTooltipDisabled]="formFieldModel.hideTooltip"
+  [matTooltipPosition]="formFieldModel.tooltipPosition"
+>
+  <mat-label> {{ inputTitle }}</mat-label>
+  <div class="smart-quantity-picker-container-col">
+    <div class="smart-quantity-picker-container-row">
+      <button
+        mat-icon-button
+        (click)="onInputChange(1)"
+        class="smart-quantity-picker-button"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <div class="smart-quantity-picker-amount">
+        {{ quantity }}
+      </div>
+      <button
+        mat-icon-button
+        (click)="onInputChange(-1)"
+        class="smart-quantity-picker-button"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

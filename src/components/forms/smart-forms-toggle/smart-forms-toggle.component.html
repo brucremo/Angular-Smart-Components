@@ -1,27 +1,20 @@
 <div
-  class="smart-form-radio-field"
+  class="smart-form-toggle-field"
   [formGroup]="formGroup"
   [matTooltip]="formFieldModel.tooltip"
   [matTooltipDisabled]="formFieldModel.hideTooltip"
   [matTooltipPosition]="formFieldModel.tooltipPosition"
 >
   <mat-label> {{ inputTitle }}</mat-label>
-  <mat-radio-group
+  <mat-button-toggle-group
+    [multiple]="multipleSelection"
+    [formControlName]="formControlName"
     (change)="onChange($event)"
-    [ngClass]="
-      orientation == 'vertical'
-        ? 'smart-form-radio-field-vertical'
-        : 'smart-form-radio-field-horizontal'
-    "
   >
-    <mat-radio-button
-      *ngFor="let radio of radios; let i = index"
-      [value]="radio.value"
-      [checked]="i == 0"
-    >
-      {{ radio.label }}
-    </mat-radio-button>
-  </mat-radio-group>
+    <mat-button-toggle *ngFor="let toggle of toggles" [value]="toggle.value">
+      {{ toggle.label }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
 
   <mat-error>
     {{ formGroup.getFormControlErrors(formControlName, inputTitle) }}

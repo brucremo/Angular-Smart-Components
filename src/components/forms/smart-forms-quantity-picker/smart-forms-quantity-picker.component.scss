@@ -1,0 +1,17 @@
+.smart-quantity-picker-container-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.smart-quantity-picker-container-col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.smart-quantity-picker-button {
+  margin: 12px;
+}

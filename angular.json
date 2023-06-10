@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/smart-components",
+            "outputPath": "dist/Smart-Components/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -110,6 +110,61 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/Smart-Components/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "Smart-Components:build:development",
+              "serverTarget": "Smart-Components:server:development"
+            },
+            "production": {
+              "browserTarget": "Smart-Components:build:production",
+              "serverTarget": "Smart-Components:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "Smart-Components:build:production",
+              "serverTarget": "Smart-Components:server:production"
+            },
+            "development": {
+              "browserTarget": "Smart-Components:build:development",
+              "serverTarget": "Smart-Components:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
