@@ -1,0 +1,25 @@
+<mat-form-field
+  class="smart-form-input-field"
+  [formGroup]="formGroup"
+  [matTooltip]="formFieldModel.tooltip"
+  [matTooltipDisabled]="formFieldModel.hideTooltip"
+  [matTooltipPosition]="formFieldModel.tooltipPosition"
+>
+  <mat-label> {{ inputTitle }}</mat-label>
+  <textarea
+    matInput
+    #autosize="cdkTextareaAutosize"
+    [cdkTextareaAutosize]="enableAutoResize"
+    [cdkAutosizeMinRows]="minRows"
+    [cdkAutosizeMaxRows]="maxRows"
+    [formControlName]="formControlName"
+    [placeholder]="formFieldModel.placeholder"
+    (change)="onChange($event)"
+  ></textarea>
+  <mat-error>
+    {{ formGroup.getFormControlErrors(formControlName, inputTitle) }}
+  </mat-error>
+
+  <!-- Further Errors -->
+  <ng-content></ng-content>
+</mat-form-field>

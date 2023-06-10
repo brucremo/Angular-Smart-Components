@@ -24,6 +24,7 @@ import {
 import { SmartFormsQuantityPickerComponent } from 'src/components/forms/smart-forms-quantity-picker/smart-forms-quantity-picker.component';
 import { Observable } from 'rxjs';
 import { SmartFormsAutocompleteComponent } from 'src/components/forms/smart-forms-autocomplete/smart-forms-autocomplete.component';
+import { SmartFormsTextareaComponent } from 'src/components/forms/smart-forms-textarea/smart-forms-textarea.component';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,7 @@ import { SmartFormsAutocompleteComponent } from 'src/components/forms/smart-form
     SmartFormsSelectComponent,
     SmartFormsToggleComponent,
     SmartFormsRadioComponent,
+    SmartFormsTextareaComponent,
     SmartFormsDatepickerComponent,
     SmartFormsAutocompleteComponent,
     SmartFormsQuantityPickerComponent,
@@ -75,6 +77,7 @@ export class AppComponent {
     radio: new FormControl(null),
     qty: new FormControl(null, Validators.compose([Validators.min(1)])),
     auto: new FormControl(null, Validators.compose([Validators.required])),
+    text: new FormControl(null, Validators.compose([Validators.required])),
   });
 
   toggles: SmartFormsToggleConfig[] = [
