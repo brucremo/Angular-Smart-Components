@@ -32,7 +32,7 @@ import { SmartFormsBaseComponent } from '../smart-forms-base/smart-forms-base.co
   ],
 })
 export class SmartFormsSelectComponent extends SmartFormsBaseComponent {
-  @Input() selectValueProperty!: string;
-  @Input() selectViewProperty!: string;
+  @Input() valueProperty!: string;
+  @Input() viewProperty!: string;
   @Input() selectOptions!: any[];
 }

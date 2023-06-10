@@ -6,17 +6,18 @@
   [matTooltipPosition]="formFieldModel.tooltipPosition"
 >
   <mat-label> {{ inputTitle }}</mat-label>
-  <mat-select
+  <input
+    matInput
     [formControlName]="formControlName"
+    [matAutocomplete]="auto"
     [placeholder]="formFieldModel.placeholder"
-  >
-    <mat-option
-      *ngFor="let option of selectOptions"
-      [value]="option[valueProperty]"
-    >
-      {{ option[viewProperty] }}
+  />
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{ option }}
     </mat-option>
-  </mat-select>
+  </mat-autocomplete>
   <mat-error>
     {{ formGroup.getFormControlErrors(formControlName, inputTitle) }}
   </mat-error>

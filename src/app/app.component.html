@@ -4,8 +4,8 @@
   <smart-forms-select
     formControlName="select"
     inputTitle="Select"
-    selectValueProperty="value"
-    selectViewProperty="view"
+    valueProperty="value"
+    viewProperty="view"
     [selectOptions]="selectOptions"
   >
   </smart-forms-select>
@@ -26,4 +26,10 @@
   </smart-forms-radio>
   <smart-forms-quantity-picker inputTitle="Quantity" formControlName="qty">
   </smart-forms-quantity-picker>
+  <smart-forms-autocomplete
+    inputTitle="Auto"
+    formControlName="auto"
+    [selectOptions]="autocompleteOptions"
+  >
+  </smart-forms-autocomplete>
 </form>
