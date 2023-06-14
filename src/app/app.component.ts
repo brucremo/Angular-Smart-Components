@@ -22,9 +22,10 @@ import {
   SmartFormsRadioConfig,
 } from 'src/components/forms/smart-forms-radio/smart-forms-radio.component';
 import { SmartFormsQuantityPickerComponent } from 'src/components/forms/smart-forms-quantity-picker/smart-forms-quantity-picker.component';
-import { Observable } from 'rxjs';
 import { SmartFormsAutocompleteComponent } from 'src/components/forms/smart-forms-autocomplete/smart-forms-autocomplete.component';
 import { SmartFormsTextareaComponent } from 'src/components/forms/smart-forms-textarea/smart-forms-textarea.component';
+import '../components/forms/extensions/validators.extensions'  
+import { SmartValidators } from '../components/forms/extensions/validators.extensions';
 
 @Component({
   selector: 'app-root',
@@ -67,7 +68,7 @@ export class AppComponent {
   ];
 
   formGroup: FormGroup = new FormGroup({
-    input: new FormControl(null, Validators.compose([Validators.required])),
+    input: new FormControl(null, Validators.compose([Validators.required, SmartValidators.double])),
     select: new FormControl(null, Validators.compose([Validators.required])),
     datepicker: new FormControl(
       null,

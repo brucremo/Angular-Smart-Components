@@ -1,37 +1,4 @@
 <form [formGroup]="formGroup">
   <smart-forms-input formControlName="input" inputTitle="Input">
   </smart-forms-input>
-  <smart-forms-select
-    formControlName="select"
-    inputTitle="Select"
-    valueProperty="value"
-    viewProperty="view"
-    [selectOptions]="selectOptions"
-  >
-  </smart-forms-select>
-  <smart-forms-datepicker formControlName="datepicker" inputTitle="Date">
-  </smart-forms-datepicker>
-  <smart-forms-toggle
-    formControlName="toggle"
-    inputTitle="Toggle"
-    [toggles]="toggles"
-    [multipleSelection]="true"
-  >
-  </smart-forms-toggle>
-  <smart-forms-radio
-    formControlName="radio"
-    inputTitle="Radio"
-    [radios]="radios"
-  >
-  </smart-forms-radio>
-  <smart-forms-quantity-picker inputTitle="Quantity" formControlName="qty">
-  </smart-forms-quantity-picker>
-  <smart-forms-autocomplete
-    inputTitle="Auto"
-    formControlName="auto"
-    [selectOptions]="autocompleteOptions"
-  >
-  </smart-forms-autocomplete>
-  <smart-forms-textarea inputTitle="Text" formControlName="text" [enableAutoResize]="true">
-  </smart-forms-textarea>
 </form>

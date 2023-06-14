@@ -1,8 +1,8 @@
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { DateTime } from 'luxon';
 import { formErrorMessage } from '../constants/formgroup.constants';
-import './abstractcontrol.extensions'  
-import './string.extensions'  
+import './abstractcontrol.extensions';
+import './string.extensions';
 
 export {};
 
@@ -26,49 +26,44 @@ FormGroup.prototype.getFormControlErrors = function (
     let formControl: AbstractControl = this.controls[formControlName];
 
     // Check for required/empty values first before further error checks
-    if (
-      formControl.isTouchedAndHasRequiredErrors()
-    ) {
+    if (formControl.isTouchedAndHasRequiredErrors()) {
       return `${formControlTitle} ${formErrorMessage['required']}`;
     }
 
     if (!formControl.valid) {
       // Get all error messages from formErrorMessage constants
-      Object.getOwnPropertyNames(formErrorMessage).forEach((prop) => {
-        let formErrors: ValidationErrors = formControl.errors!;
+      let errorProperty = Object.getOwnPropertyNames(formControl.errors).at(0);
 
-        let validationValueText: string = '';
+      let formErrors: ValidationErrors = formControl.errors!;
 
-        if(~formErrors || !formErrors[prop]){
-          return null;
-        }
+      let validationValueText: string = '';
 
-        switch (prop) {
-          case 'minLength':
-            validationValueText = `${formErrors['minLength'].requiredLength} characters`;
-            break;
-          case 'maxLength':
-            validationValueText = `${formErrors['maxLength'].requiredLength} characters`;
-            break;
-          case 'matDatepickerMin':
-            validationValueText = `${formatAbstractControlDate(
-              formErrors['matDatepickerMin'].min,
-              dateFormat
-            )}`;
-            break;
-          case 'matDatepickerMax':
-            validationValueText = `${formatAbstractControlDate(
-              formErrors['matDatepickerMax'].max,
-              dateFormat
-            )}`;
-            break;
-          default:
-            validationValueText = `${formErrors[prop][prop] || ''}`;
-            break;
-        }
+      switch (formErrors[errorProperty!]) {
+        case 'minLength':
+          validationValueText = `${formErrors['minLength'].requiredLength} characters`;
+          break;
+        case 'maxLength':
+          validationValueText = `${formErrors['maxLength'].requiredLength} characters`;
+          break;
+        case 'matDatepickerMin':
+          validationValueText = `${formatAbstractControlDate(
+            formErrors['matDatepickerMin'].min,
+            dateFormat
+          )}`;
+          break;
+        case 'matDatepickerMax':
+          validationValueText = `${formatAbstractControlDate(
+            formErrors['matDatepickerMax'].max,
+            dateFormat
+          )}`;
+          break;
+        default:
+          break;
+      }
 
-        return `${formControlTitle} ${formErrorMessage[prop]} ${validationValueText}`;
-      });
+      return `${formControlTitle} ${
+        formErrorMessage[errorProperty!]
+      } ${validationValueText}`;
     }
 
     return '';
