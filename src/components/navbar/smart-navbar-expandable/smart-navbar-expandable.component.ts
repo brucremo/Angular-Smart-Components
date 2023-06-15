@@ -11,6 +11,7 @@ import {
   animate,
 } from '@angular/animations';
 import { PortalModule } from '@angular/cdk/portal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'smart-navbar-expandable',
@@ -43,11 +44,21 @@ export class SmartNavbarExpandableComponent {
   @Input() logoImagePath: string | null = null;
 
   public isExpanded: boolean = false;
-  public selectedExpandableContent: SmartNavbarExpandableContent | null = null;;
+  public selectedExpandableContent: SmartNavbarExpandableContent | null = null;
+
+  constructor(private router: Router) {}
+
+  public onItemClicked(item: SmartNavbarExpandableContent): void {
+    if (!!item.route) {
+      this.router.navigate([item.route]);
+    }
+  }
 
   public onMouseEnteredItem(item: SmartNavbarExpandableContent): void {
-    this.isExpanded = true;
-    this.selectedExpandableContent = item;
+    if (!!item.portalContent) {
+      this.isExpanded = true;
+      this.selectedExpandableContent = item;
+    }
   }
 
   public onMouseLeaveBar(): void {
@@ -58,5 +69,6 @@ export class SmartNavbarExpandableComponent {
 
 export interface SmartNavbarExpandableContent {
   label: string;
-  portalContent: Portal<any>
+  route?: string | null;
+  portalContent?: Portal<any> | null;
 }

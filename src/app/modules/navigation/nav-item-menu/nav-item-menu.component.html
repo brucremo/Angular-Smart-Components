@@ -1,0 +1,29 @@
+<div class="smart-navbar-row" @transitionFadeIn>
+  <!-- Mains -->
+  <div class="smart-navbar-col menu-section">
+    <h3 class="smart-navbar-section-title">Main Dishes</h3>
+    <div class="nav-item-container">
+      <mat-list-item *ngFor="let item of mainFoods">
+        <a matListItemTitle (click)="onItemClicked(item)">{{ item.label }}</a>
+      </mat-list-item>
+    </div>
+  </div>
+  <!-- Sides -->
+  <div class="smart-navbar-col menu-section">
+    <h3 class="smart-navbar-section-title">Sides</h3>
+    <div class="nav-item-container">
+      <mat-list-item *ngFor="let item of sides">
+        <a matListItemTitle (click)="onItemClicked(item)">{{ item.label }}</a>
+      </mat-list-item>
+    </div>
+  </div>
+  <!-- Dessert and Beverages -->
+  <div class="smart-navbar-col menu-section">
+    <h3 class="smart-navbar-section-title">Dessert and Beverages</h3>
+    <div class="nav-item-container">
+      <mat-list-item *ngFor="let item of others">
+        <a matListItemTitle (click)="onItemClicked(item)">{{ item.label }}</a>
+      </mat-list-item>
+    </div>
+  </div>
+</div>

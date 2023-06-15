@@ -33,7 +33,7 @@ import {
 import { NavHomeComponent } from './modules/navigation/nav-home/nav-home.component';
 import { ComponentPortal, Portal } from '@angular/cdk/portal';
 import { NavContactComponent } from './modules/navigation/nav-contact/nav-contact.component';
-import { NavAboutComponent } from './modules/navigation/nav-about/nav-about.component';
+import { NavItemMenuComponent } from './modules/navigation/nav-item-menu/nav-item-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -145,15 +145,16 @@ export class AppComponent {
   navbarContent: SmartNavbarExpandableContent[] = [
     {
       label: 'Home',
-      portalContent: new ComponentPortal(NavHomeComponent),
+      portalContent: null,
+      route: "/"
+    },
+    {
+      label: 'Menu',
+      portalContent: new ComponentPortal(NavItemMenuComponent),
     },
     {
       label: 'Contact',
       portalContent: new ComponentPortal(NavContactComponent),
-    },
-    {
-      label: 'About Us',
-      portalContent: new ComponentPortal(NavAboutComponent),
-    },
+    }
   ];
 }
