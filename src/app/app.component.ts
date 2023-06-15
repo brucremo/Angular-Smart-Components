@@ -24,8 +24,16 @@ import {
 import { SmartFormsQuantityPickerComponent } from 'src/components/forms/smart-forms-quantity-picker/smart-forms-quantity-picker.component';
 import { SmartFormsAutocompleteComponent } from 'src/components/forms/smart-forms-autocomplete/smart-forms-autocomplete.component';
 import { SmartFormsTextareaComponent } from 'src/components/forms/smart-forms-textarea/smart-forms-textarea.component';
-import '../components/forms/extensions/validators.extensions'  
+import '../components/forms/extensions/validators.extensions';
 import { SmartValidators } from '../components/forms/extensions/validators.extensions';
+import {
+  SmartNavbarExpandableComponent,
+  SmartNavbarExpandableContent,
+} from 'src/components/navbar/smart-navbar-expandable/smart-navbar-expandable.component';
+import { NavHomeComponent } from './modules/navigation/nav-home/nav-home.component';
+import { ComponentPortal, Portal } from '@angular/cdk/portal';
+import { NavContactComponent } from './modules/navigation/nav-contact/nav-contact.component';
+import { NavAboutComponent } from './modules/navigation/nav-about/nav-about.component';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +43,7 @@ import { SmartValidators } from '../components/forms/extensions/validators.exten
     RouterOutlet,
     FormsModule,
     ReactiveFormsModule,
+    SmartNavbarExpandableComponent,
     SmartFormsInputComponent,
     SmartFormsSelectComponent,
     SmartFormsToggleComponent,
@@ -68,7 +77,10 @@ export class AppComponent {
   ];
 
   formGroup: FormGroup = new FormGroup({
-    input: new FormControl(null, Validators.compose([Validators.required, SmartValidators.double])),
+    input: new FormControl(
+      null,
+      Validators.compose([Validators.required, SmartValidators.double])
+    ),
     select: new FormControl(null, Validators.compose([Validators.required])),
     datepicker: new FormControl(
       null,
@@ -127,6 +139,21 @@ export class AppComponent {
     {
       label: '123',
       value: 3,
+    },
+  ];
+
+  navbarContent: SmartNavbarExpandableContent[] = [
+    {
+      label: 'Home',
+      portalContent: new ComponentPortal(NavHomeComponent),
+    },
+    {
+      label: 'Contact',
+      portalContent: new ComponentPortal(NavContactComponent),
+    },
+    {
+      label: 'About Us',
+      portalContent: new ComponentPortal(NavAboutComponent),
     },
   ];
 }

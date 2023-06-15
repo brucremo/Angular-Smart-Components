@@ -1,0 +1,25 @@
+<mat-toolbar
+  class="smart-navbar-container"
+  (mouseleave)="onMouseLeaveBar()"
+  [@toggleNavbar]="isExpanded ? 'expanded' : 'collapsed'"
+>
+  <!-- Buttons -->
+  <div class="smart-navbar-row">
+    <img class="smart-navbar-logo" [src]="logoImagePath" />
+    <button
+      class="smart-navbar-label"
+      mat-button
+      *ngFor="let item of content"
+      (mouseenter)="onMouseEnteredItem(item)"
+    >
+      {{ item.label }}
+    </button>
+  </div>
+  <!-- Expanded Content -->
+  <div class="smart-navbar-row">
+    <ng-template
+      *ngIf="!!selectedExpandableContent"
+      [cdkPortalOutlet]="selectedExpandableContent.portalContent"
+    ></ng-template>
+  </div>
+</mat-toolbar>
