@@ -30,7 +30,6 @@ import {
   SmartNavbarExpandableComponent,
   SmartNavbarExpandableContent,
 } from 'src/components/navbar/smart-navbar-expandable/smart-navbar-expandable.component';
-import { NavHomeComponent } from './modules/navigation/nav-home/nav-home.component';
 import { ComponentPortal, Portal } from '@angular/cdk/portal';
 import { NavContactComponent } from './modules/navigation/nav-contact/nav-contact.component';
 import { NavItemMenuComponent } from './modules/navigation/nav-item-menu/nav-item-menu.component';
