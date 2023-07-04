@@ -33,6 +33,10 @@ import {
 import { ComponentPortal, Portal } from '@angular/cdk/portal';
 import { NavContactComponent } from './modules/navigation/nav-contact/nav-contact.component';
 import { NavItemMenuComponent } from './modules/navigation/nav-item-menu/nav-item-menu.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SmartNavbarSidemenuComponent, SmartNavbarSidemenuContent } from 'src/components/navbar/smart-navbar-sidemenu/smart-navbar-sidemenu.component';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +47,7 @@ import { NavItemMenuComponent } from './modules/navigation/nav-item-menu/nav-ite
     FormsModule,
     ReactiveFormsModule,
     SmartNavbarExpandableComponent,
+    SmartNavbarSidemenuComponent,
     SmartFormsInputComponent,
     SmartFormsSelectComponent,
     SmartFormsToggleComponent,
@@ -53,6 +58,9 @@ import { NavItemMenuComponent } from './modules/navigation/nav-item-menu/nav-ite
     SmartFormsQuantityPickerComponent,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -141,7 +149,7 @@ export class AppComponent {
     },
   ];
 
-  navbarContent: SmartNavbarExpandableContent[] = [
+  navbarExpandableContent: SmartNavbarExpandableContent[] = [
     {
       label: 'Home',
       portalContent: null,
@@ -156,4 +164,22 @@ export class AppComponent {
       portalContent: new ComponentPortal(NavContactComponent),
     }
   ];
+
+  navbarSidemenuContent: SmartNavbarSidemenuContent[] = [
+    {
+      icon: "home",
+      label: 'Home',
+      route: "home"
+    },
+    {
+      icon: "menu_book",
+      label: 'Menu',
+      route: "menu"
+    },
+    {
+      icon: "contact_phone",
+      label: 'Contact',
+      route: "contact"
+    }
+  ]
 }

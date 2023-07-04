@@ -15,9 +15,12 @@
     >
       {{ item.label }}
     </button>
+    <div class="smart-navbar-commands">
+      <ng-content></ng-content>
+    </div>
   </div>
   <!-- Expanded Content -->
-  <div class="smart-navbar-content">
+  <div class="smart-navbar-content" @toggleNavbar>
     <ng-template
       *ngIf="!!selectedExpandableContent"
       [cdkPortalOutlet]="selectedExpandableContent.portalContent"

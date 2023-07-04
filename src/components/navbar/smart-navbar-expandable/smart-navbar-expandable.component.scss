@@ -6,32 +6,34 @@
 }
 
 .smart-navbar-main-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    max-height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-height: 60px;
+  width: 100%;
 }
 
 .smart-navbar-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.smart-navbar-logo {
-    height: 38%;
-    margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .smart-navbar-label {
-    margin: 0px 8px 0px 8px;
+  margin: 0px 8px 0px 8px;
 }
 
 .smart-navbar-portal-outlet {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.smart-navbar-commands {
+  position: absolute;
+  right: 0;
+  margin-right: 14px;
 }

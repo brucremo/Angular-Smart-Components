@@ -1,0 +1,27 @@
+.smart-list-item-collapsed {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.smart-nav-list-item {
+  padding: 0px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.smart-list-item-expanded {
+  justify-content: start;
+  margin-left: 10px;
+}
+
+.smart-list-item-collapsed {
+  justify-content: center;
+}
+
+.smart-nav-list-item-label {
+  margin-left: 12px;
+}

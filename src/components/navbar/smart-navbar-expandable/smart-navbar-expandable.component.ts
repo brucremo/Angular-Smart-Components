@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Portal } from '@angular/cdk/portal';
@@ -12,13 +12,26 @@ import {
 } from '@angular/animations';
 import { PortalModule } from '@angular/cdk/portal';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { SmartNavbarContent } from '../shared/smart-navbar-content.interface';
+import { SmartNavbarBaseComponent } from '../smart-navbar-base/smart-navbar-base.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'smart-navbar-expandable',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, PortalModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    PortalModule,
+    MatIconModule,
+  ],
   templateUrl: './smart-navbar-expandable.component.html',
-  styleUrls: ['./smart-navbar-expandable.component.scss'],
+  styleUrls: [
+    './smart-navbar-expandable.component.scss',
+    '../smart-navbar-base/smart-navbar-base.component.css',
+  ],
   animations: [
     trigger('toggleNavbar', [
       state(
@@ -39,19 +52,15 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class SmartNavbarExpandableComponent {
-  @Input() content: SmartNavbarExpandableContent[] = [];
-  @Input() logoImagePath: string | null = null;
-
+export class SmartNavbarExpandableComponent extends SmartNavbarBaseComponent {
   public isExpanded: boolean = false;
   public selectedExpandableContent: SmartNavbarExpandableContent | null = null;
 
-  constructor(private router: Router) {}
-
-  public onItemClicked(item: SmartNavbarExpandableContent): void {
-    if (!!item.route) {
-      this.router.navigate([item.route]);
-    }
+  constructor(
+    public override breakPointObserver: BreakpointObserver,
+    public override router: Router
+  ) {
+    super(breakPointObserver, router);
   }
 
   public onMouseEnteredItem(item: SmartNavbarExpandableContent): void {
@@ -67,8 +76,8 @@ export class SmartNavbarExpandableComponent {
   }
 }
 
-export interface SmartNavbarExpandableContent {
-  label: string;
+export class SmartNavbarExpandableContent implements SmartNavbarContent {
+  label?: string;
   route?: string | null;
   portalContent?: Portal<any> | null;
 }

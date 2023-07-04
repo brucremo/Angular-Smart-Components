@@ -1,0 +1,27 @@
+<!-- Expanded Mode -->
+<div
+  class="flex-row smart-nav-list-item smart-list-item-expanded"
+  mat-list-item
+  *ngIf="isExpanded"
+>
+  <!-- Icon -->
+  <mat-icon *ngIf="content.icon" class="smart-nav-list-item-icon">
+    {{ content.icon }}
+  </mat-icon>
+  <!-- Label -->
+  <span class="smart-nav-list-item-label"> {{ content.label }} </span>
+</div>
+
+<!-- Collapsed Mode -->
+<div
+  mat-list-item
+  class="flex-column smart-nav-list-item smart-list-item-collapsed"
+  [matTooltip]="content.label!"
+  matTooltipPosition="after"
+  *ngIf="!isExpanded"
+>
+  <!-- Icon -->
+  <mat-icon *ngIf="content.icon" class="smart-nav-list-item-icon">
+    {{ content.icon }}
+  </mat-icon>
+</div>

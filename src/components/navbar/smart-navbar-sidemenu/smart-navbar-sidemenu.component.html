@@ -1,0 +1,63 @@
+<!-- Toolbar -->
+<mat-toolbar>
+  <div
+    class="smart-toolbar-container"
+    [ngClass]="{
+      'smart-toolbar-container-content-left': alignToolbarContent == 'left',
+      'smart-toolbar-container-content-right': alignToolbarContent == 'right'
+    }"
+  >
+    <!-- Default Content -->
+    <div class="smart-toolbar-default-content">
+      <div class="smart-toolbar-default-content-row">
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img class="smart-navbar-logo" [src]="logoImagePath" />
+      </div>
+    </div>
+
+    <!-- Toolbar Content -->
+    <ng-content select="[smart-toolbar-content]"> </ng-content>
+  </div>
+</mat-toolbar>
+<!-- Sidenav Container -->
+<mat-sidenav-container class="smart-sidemenu-container">
+  <!-- Sidenav -->
+  <mat-sidenav
+    [@toggleNavbar]="
+      (breakpoints | async)!.isHandset
+        ? isSidenavOpen
+          ? 'opened-handset'
+          : 'closed-handset'
+        : isSidenavOpen
+        ? 'opened'
+        : 'closed'
+    "
+    mode="side"
+    opened="true"
+  >
+    <mat-nav-list class="smart-nav-list">
+      <mat-list-item
+        class="smart-nav-list-item"
+        *ngFor="let item of content"
+        (click)="onItemClicked(item)"
+      >
+        <smart-nav-list-item [content]="item" [isExpanded]="isSidenavOpen">
+        </smart-nav-list-item>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- Content -->
+  <mat-sidenav-content
+    [ngClass]="{
+    'smart-navbar-content-closed': !(breakpoints | async)!.isHandset && !isSidenavOpen,
+    'smart-navbar-content-open': !(breakpoints | async)!.isHandset && isSidenavOpen,
+    'smart-navbar-content-closed-handset': (breakpoints | async)!.isHandset && !isSidenavOpen,
+    'smart-navbar-content-open-handset': (breakpoints | async)!.isHandset && isSidenavOpen,
+  }"
+  >
+    <!-- App Content -->
+    <ng-content select="[smart-nav-app-content]"> </ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

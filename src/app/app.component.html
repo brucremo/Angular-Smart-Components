@@ -1,8 +1,16 @@
 <div class="app-main">
-  <smart-navbar-expandable
+  <smart-navbar-sidemenu
+    class="smart-navbar"
     [logoImagePath]="'../assets/icons/icon-72x72.png'"
-    [content]="navbarContent"
+    [content]="navbarSidemenuContent"
   >
-  </smart-navbar-expandable>
+    <!-- Toolbar -->
+    <div class="smart-toolbar-content" smart-toolbar-content>
+      <button mat-icon-button matTooltip="My Order">
+        <mat-icon>shopping_bag</mat-icon>
+      </button>
+    </div>
+    <!-- App Content -->
+    <router-outlet smart-nav-app-content></router-outlet>
+  </smart-navbar-sidemenu>
 </div>
-

@@ -1,0 +1,43 @@
+<!-- Expanded Mode -->
+<div *ngIf="isExpanded">
+  <a
+    mat-list-item
+    class="smart-nav-list-item"
+    [ngClass]="{ 'smart-nav-list-item-selected': isSelected }"
+    (click)="onItemClicked.emit(content)"
+  >
+    <mat-icon *ngIf="content.icon" class="smart-nav-list-item-icon">
+      {{ content.icon }}
+    </mat-icon>
+    <span class="smart-nav-list-item-label"> {{ content.label }} </span>
+  </a>
+</div>
+
+<!-- Collapsed Mode -->
+<div class="smart-list-item-collapsed" *ngIf="!isExpanded">
+  <!-- Menu with child nodes -->
+  <a
+    mat-list-item
+    class="flex-column smart-nav-list-item"
+    [ngClass]="{ 'smart-nav-list-item-selected': isSelected }"
+    (click)="onItemClicked.emit(content)"
+    [matMenuTriggerFor]="menu"
+    [matTooltip]="content.label!"
+    matTooltipPosition="after"
+  >
+    <!-- Icon -->
+    <mat-icon *ngIf="content.icon" class="smart-nav-list-item-icon">
+      {{ content.icon }}
+    </mat-icon>
+    <!-- Menu -->
+    <mat-menu #menu="matMenu">
+      <span class="smart-nav-list-item-label">
+        {{ content.label }}
+      </span>
+      <mat-nav-list> </mat-nav-list>
+    </mat-menu>
+  </a>
+
+  <!-- Menu with no child nodes-->
+  <ng-template #childlessClosedMenu> </ng-template>
+</div>
