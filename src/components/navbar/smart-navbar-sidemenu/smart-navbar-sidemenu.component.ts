@@ -8,7 +8,6 @@ import { SmartNavbarContent } from '../shared/smart-navbar-content.interface';
 import { SmartNavbarBaseComponent } from '../smart-navbar-base/smart-navbar-base.component';
 import { Router } from '@angular/router';
 import {
-  MatSidenav,
   MatSidenavModule,
 } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -81,16 +80,13 @@ const sidenavOpenWidthHandset: string = "100%";
 })
 export class SmartNavbarSidemenuComponent extends SmartNavbarBaseComponent {
   @Input() alignToolbarContent: 'left' | 'right' = 'right';
-  @Input() sidenavAlwaysOn: boolean = false;
-
-  @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
 
   public isSidenavOpen: boolean = false;
   public isHandset: boolean = false;
 
   constructor(
-    public override breakPointObserver: BreakpointObserver,
     private localStorage: SmartLocalStorageService,
+    public override breakPointObserver: BreakpointObserver,
     public override router: Router
   ) {
     super(breakPointObserver, router);
